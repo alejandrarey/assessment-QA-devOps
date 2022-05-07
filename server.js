@@ -8,18 +8,7 @@ const {shuffleArray} = require('./utils');
 app.use(cors());
 app.use(express.json());
 
-// Part 1 Assessment: connecting to paths
-
-// app.get("/", function(req, res) {
-//     res.sendFile(path.join(__dirname, "/public/index.html"))
-// })
-// app.get('/styles', (req,res) => {
-//     res.sendFile(path.join(__dirname, "/public/index.css"))
-// })
-// app.get('/js', (req,res) => {
-//     res.sendFile(path.join(__dirname, "/public/index.js"))
-// })
-
+// Part 1 Assessment: connecting to paths (just need to direct to the public folder and the necessary files will load)
 
 app.use(express.static(__dirname+'/public'));
 
