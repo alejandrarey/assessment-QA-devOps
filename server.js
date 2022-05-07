@@ -24,9 +24,10 @@ rollbar.log('Hello world!')
 // Part 1 Assessment: connecting to paths (just need to direct to the public folder and the necessary files will load)
 
 app.use(express.static(__dirname+'/public'));
-
+rollbar.info("App served successfully");
 
 app.get('/api/robots', (req, res) => {
+   
     try {
         res.status(200).send(botsArr)
     } catch (error) {
@@ -37,6 +38,7 @@ app.get('/api/robots', (req, res) => {
 
 
 app.get('/api/robots/five', (req, res) => {
+    rollbar.info("robots are shuffling");
     try {
         let shuffled = shuffleArray(bots)
         let choices = shuffled.slice(0, 5)
@@ -49,6 +51,7 @@ app.get('/api/robots/five', (req, res) => {
 })
 
 app.post('/api/duel', (req, res) => {
+   
     try {
         // getting the duos from the front end
         let {compDuo, playerDuo} = req.body
@@ -70,6 +73,7 @@ app.post('/api/duel', (req, res) => {
             playerRecord.losses++
             res.status(200).send('You lost!')
         } else {
+            rollbar.error("this victory will not add up to the Wins counter");
             playerRecord.losses++
             res.status(200).send('You won!')
         }
@@ -82,6 +86,7 @@ app.post('/api/duel', (req, res) => {
 app.get('/api/player', (req, res) => {
     try {
         res.status(200).send(playerRecord)
+        rollbar.info("one more game on app");
     } catch (error) {
         console.log('ERROR GETTING PLAYER STATS', error)
         res.sendStatus(400)
