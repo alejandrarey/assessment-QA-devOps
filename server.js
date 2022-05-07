@@ -10,16 +10,18 @@ app.use(express.json());
 
 // Part 1 Assessment: connecting to paths
 
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "/public/index.html"))
-})
-app.get('/styles', (req,res) => {
-    res.sendFile(path.join(__dirname, "/public/index.css"))
-})
-app.get('/js', (req,res) => {
-    res.sendFile(path.join(__dirname, "/public/index.js"))
-})
+// app.get("/", function(req, res) {
+//     res.sendFile(path.join(__dirname, "/public/index.html"))
+// })
+// app.get('/styles', (req,res) => {
+//     res.sendFile(path.join(__dirname, "/public/index.css"))
+// })
+// app.get('/js', (req,res) => {
+//     res.sendFile(path.join(__dirname, "/public/index.js"))
+// })
 
+
+app.use(express.static(__dirname+'/public'));
 
 
 app.get('/api/robots', (req, res) => {
