@@ -8,6 +8,19 @@ const {shuffleArray} = require('./utils');
 app.use(cors());
 app.use(express.json());
 
+// Part 5 Assessment: Rollbar
+
+// include and initialize the rollbar library with your access token
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: '75efa410b27b4461ac8f307858a80ba0',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
+// record a generic message and send it to Rollbar
+rollbar.log('Hello world!')
+
 // Part 1 Assessment: connecting to paths (just need to direct to the public folder and the necessary files will load)
 
 app.use(express.static(__dirname+'/public'));
