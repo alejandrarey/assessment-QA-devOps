@@ -182,4 +182,6 @@ duelBtn.addEventListener('click', duel)
 playAgainBtn.addEventListener('click', reset)
 seeAllBtn.addEventListener('click', getAllBots)
 
+
+
 getPlayerStats()
